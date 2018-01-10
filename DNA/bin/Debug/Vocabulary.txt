@@ -1,0 +1,48 @@
+add command,To add a command ask to show commands and add it in manually please,,COM
+alan close,closing now,,COM
+alan close please,closing now,,COM
+alan dont listen,I will not listen,,COM
+alan listen,listening now,,COM
+alan start listening,listening once again,,COM
+alan stop listening,I am no longer listening,,COM
+can you add commands,You are working on it,,COM
+close,,,DIC
+close chrome,,,DIC
+close commands,closing commands,,COM
+close discord,,,DIC
+Close Outlook,,,DIC
+close program,closing,,COM
+close spotify,,,DIC
+close steam,,,DIC
+close tab,,,DIC
+Do you know why we are here,I think we are alive today to study the universe that we live in,,COM
+good thank you for asking, that is allways good to hear,,COM
+good thanks for asking,Good how can I help,,COM
+minimize chrome,,,DIC
+minimize discord,,,DIC
+minimize spotify,,,DIC
+minimize steam,,,DIC
+next tab,,,DIC
+open chrome,starting chrome ,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk,URL
+open discord,sure thing,C:\Users\smithjon\AppData\Local\Discord\app-0.0.299\Discord.exe,URL
+open spotialarm,opening,C:\Users\Voxel\Desktop\SpotiAlarm.exe,URL
+open spotify,opening now ,C:\Users\Voxel\AppData\Roaming\Spotify\Spotify.exe,URL
+Open steam,have a good time ,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam\Steam.lnk,URL
+open youtube,sure thing,https://www.youtube.com/,URL
+pause,,,DIC
+play,,,DIC
+reload, reloading vocab,,COM
+select chrome,,,DIC
+select discord,,,DIC
+select outlook,,,DIC
+select spotify,,,DIC
+select steam,,,DIC
+Select Task manager,,,DIC
+Show Commands,Showing Commands,,COM
+switch tabs,,,DIC
+Thanks for the help,That is what I am here for ,,COM
+what all can you do,I can do as much as I am programmed to do,,COM
+what is your favorite game,I do not know as of now but someday I may ,,COM
+what is your favorite song,My favorite song is reverie by claude debussy ,https://www.youtube.com/watch?v=QRjllL-MP0U,URL
+What is your purpose,To help when at all possible,,COM
+where is my mind,Way out in the water? ,,COM

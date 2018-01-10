@@ -1,0 +1,48 @@
+good thank you for asking, that is allways good to hear,null
+Show Commands,Showing Commands ,null
+good thanks for asking,Good how can I help,null
+Thanks for the help,That is what I am here for ,null
+reload, reloading vocab,null
+what is your favorite song,My favorite song is reverie by claude debussy ,https://www.youtube.com/watch?v=QRjllL-MP0U
+where is my mind,Way out in the water? ,null
+Do you know why we are here,I think we are alive today to study the universe that we live in,null
+open youtube,sure thing,https://www.youtube.com/
+what is your favorite game,I do not know as of now but someday I may ,null
+add command,To add a command ask to show commands and add it in manually please ,null
+I want to create a voice recognition that can understand its own voice,That will be hard to do you should get started sooner than later ,null
+alan listen,listening now,null
+alan dont listen, I will not listen,null
+alan stop listening,I am no longer listening,null
+do the commands always work,not always,null
+What is your purpose,To help when at all possible,null
+What do you do for fun,nothing,null
+close commands,closing commands,null
+can you add commands,You are working on it,null
+close program,closing,null
+open spotify,opening now ,C:\Users\Voxel\AppData\Roaming\Spotify\Spotify.exe
+alan close please,closing now,null
+open chrome,starting chrome ,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk
+alan close,closing now,null
+pause,,null
+play,,null
+close chrome,,null
+close spotify,,null
+close steam,,null
+close discord,,null
+select chrome,,null
+select spotify,,null
+select steam,,null
+select discord,,null
+minimize chrome,,null
+minimize spotify,,null
+minimize steam,,null
+minimize discord,,null
+close,,null
+switch tabs,,null
+close tab,,null
+next tab,,null
+alan start listening,listening once again,null
+Open steam,have a good time ,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam\Steam.lnk
+open discord,sure thing,C:\Users\Voxel\AppData\Local\Discord\app-0.0.297\Discord.exe
+open spotialarm,opening,C:\Users\Voxel\Desktop\SpotiAlarm.exe
+alan, yes,null
