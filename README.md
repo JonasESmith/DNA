@@ -1,4 +1,2 @@
 # DNA
-Dynamic Narration Assistant
-
-An extremely simple user programmable voice recognition assistant. As of now it is still pretty inefficient, and can be improved greatly. 
+DNA or Dynamic Narration Assistant is a user programmable application that allows for the user to dictate commands to control the system, for Example, DNA can navigate windows by say select [window name], it can also be programmed to open application when the user gives it a specific command and the path to the executable or file. The programmes dictionary is completely dependent on what the user decides it to be. 
