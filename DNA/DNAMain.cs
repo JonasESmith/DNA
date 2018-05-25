@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using DNA.Properties;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace DNA
 {
@@ -283,5 +284,75 @@ namespace DNA
     }
 
     #endregion
+
+    private void showCommandsButton_Click(object sender, EventArgs e)
+    {
+      showCommandsPanel.Controls.Clear();
+
+      consoleLog.Visible = false;
+      showCommandsPanel.Visible = true;
+      showCommandsPanel.Dock = DockStyle.Fill;
+      int topMargin = 0;
+
+      for(int i = 0; i < vocabList.Count; i++)
+      {
+        Panel vocabPanel = new Panel();
+        vocabPanel.Width = showCommandsPanel.Width - 20;
+        vocabPanel.Top = topMargin;
+        vocabPanel.Height = 30;
+        vocabPanel.Name = "Panel" + i;
+
+        Button phraseInButton = new Button();
+        phraseInButton.Name = "InButton" + i;
+        phraseInButton.Text = vocabList[i].PhraseIn.ToString();
+        phraseInButton.Width = (vocabPanel.Width / 3);
+        phraseInButton.Height = 30;
+        phraseInButton.TextAlign = ContentAlignment.MiddleCenter;
+
+        Button phraseOutButton = new Button();
+        phraseOutButton.Name = "OutButton" + i;
+        phraseOutButton.Text = vocabList[i].PhraseIn.ToString();
+        phraseOutButton.Width = vocabPanel.Width / 2;
+        phraseOutButton.Height = 30;
+        phraseOutButton.Left = phraseInButton.Width;
+        phraseOutButton.TextAlign = ContentAlignment.MiddleCenter;
+
+        Button executableButton = new Button();
+        if (String.IsNullOrEmpty(vocabList[i].URL))
+        {
+          executableButton.Enabled = false;
+          executableButton.Text = "No path";
+        }
+        else
+        {
+          executableButton.Text = vocabList[i].URL;
+        }
+        executableButton.Name = "ExeButton" + i;
+        executableButton.Width = vocabPanel.Width - (phraseInButton.Width + phraseOutButton.Width);
+        executableButton.Height = 30;
+        executableButton.Left = phraseInButton.Width + phraseOutButton.Width;
+        executableButton.TextAlign = ContentAlignment.MiddleCenter;
+
+        topMargin += phraseOutButton.Height + 2;
+
+        vocabPanel.Controls.Add(phraseInButton);
+        vocabPanel.Controls.Add(phraseOutButton);
+        vocabPanel.Controls.Add(executableButton);
+
+        showCommandsPanel.Controls.Add(vocabPanel);
+      }
+
+      showCommandsPanel.AutoScroll = false;
+      showCommandsPanel.HorizontalScroll.Enabled = false;
+      showCommandsPanel.HorizontalScroll.Visible = false;
+      showCommandsPanel.HorizontalScroll.Maximum = 0;
+      showCommandsPanel.AutoScroll = true;
+    }
+
+    private void addCommandButton_Click(object sender, EventArgs e)
+    {
+      consoleLog.Visible = false;
+      showCommandsPanel.Visible = false;
+    }
   }
 }
