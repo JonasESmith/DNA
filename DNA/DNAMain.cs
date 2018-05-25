@@ -22,6 +22,7 @@ using System.Reflection;
 using DNA.Properties;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace DNA
 {
@@ -296,15 +297,30 @@ namespace DNA
     {
       showCommandsPanel.Controls.Clear();
 
-      consoleLog.Visible = false;
+      consoleLogPanel.Visible = false;
       addCommandPanel.Visible = false;
 
       commandPanel.Visible = true;
       showCommandsPanel.Visible = true;
       commandPanel.Dock = DockStyle.Fill;
+
+      int CommandWidth = commandPanel.Width - 20;
+
+      phraseinTitleButton.Width = (CommandWidth / 3);
+      phraseinTitleButton.FlatAppearance.MouseOverBackColor = phraseinTitleButton.BackColor;
+
+      phraseOutTitleButton.Width = CommandWidth / 2;
+      phraseOutTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
+
+      pathTitleButton.Width = commandPanel.Width - (phraseOutTitleButton.Width + phraseinTitleButton.Width + 20);
+      pathTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
+
+      fillerTitleBarPanel.BackColor = phraseOutTitleButton.BackColor;
+
+
       int topMargin = 0;
 
-      for(int i = 0; i < vocabList.Count; i++)
+      for (int i = 0; i < vocabList.Count; i++)
       {
         Panel vocabPanel = new Panel();
         vocabPanel.Width = showCommandsPanel.Width - 20;
@@ -321,22 +337,36 @@ namespace DNA
         phraseInButton.TextAlign = ContentAlignment.MiddleCenter;
         phraseInButton.FlatStyle = FlatStyle.Flat;
         phraseInButton.FlatAppearance.BorderSize = 0;
+        phraseInButton.MouseEnter += InButton_MouseEnter;
+        phraseInButton.MouseLeave += InButton_MouseLeave;
+        phraseInButton.MouseClick += PhraseInButton_MouseClick;
+        phraseInButton.FlatAppearance.MouseOverBackColor = SystemColors.ScrollBar;
 
 
         Button phraseOutButton = new Button();
+        string name = "OutButton" + i;
         phraseOutButton.Name = "OutButton" + i;
-        phraseOutButton.Text = vocabList[i].PhraseIn.ToString();
+        phraseOutButton.Text = vocabList[i].PhraseOut.ToString();
         phraseOutButton.Width = vocabPanel.Width / 2;
         phraseOutButton.Height = 30;
         phraseOutButton.Left = phraseInButton.Width;
         phraseOutButton.TextAlign = ContentAlignment.MiddleCenter;
         phraseOutButton.FlatStyle = FlatStyle.Flat;
         phraseOutButton.FlatAppearance.BorderSize = 0;
-
-
+        phraseOutButton.FlatAppearance.MouseOverBackColor = SystemColors.ScrollBar;
+        phraseOutButton.MouseEnter += OutButton_MouseEnter;
+        phraseOutButton.MouseLeave += OutButton_MouseLeave;
+        phraseOutButton.MouseClick += PhraseOutButton_MouseClick;
 
 
         Button executableButton = new Button();
+        executableButton.Name = "ExeButton" + i;
+        executableButton.Width = vocabPanel.Width - (phraseInButton.Width + phraseOutButton.Width);
+        executableButton.Height = 30;
+        executableButton.Left = phraseInButton.Width + phraseOutButton.Width;
+        executableButton.TextAlign = ContentAlignment.MiddleCenter;
+        executableButton.FlatStyle = FlatStyle.Flat;
+        executableButton.FlatAppearance.BorderSize = 0;
         if (String.IsNullOrEmpty(vocabList[i].URL))
         {
           executableButton.Enabled = false;
@@ -346,14 +376,6 @@ namespace DNA
         {
           executableButton.Text = vocabList[i].URL;
         }
-        executableButton.Name = "ExeButton" + i;
-        executableButton.Width = vocabPanel.Width - (phraseInButton.Width + phraseOutButton.Width);
-        executableButton.Height = 30;
-        executableButton.Left = phraseInButton.Width + phraseOutButton.Width;
-        executableButton.TextAlign = ContentAlignment.MiddleCenter;
-        executableButton.FlatStyle = FlatStyle.Flat;
-        executableButton.FlatAppearance.BorderSize = 0;
-
 
         topMargin += phraseOutButton.Height + 2;
 
@@ -362,18 +384,6 @@ namespace DNA
         vocabPanel.Controls.Add(executableButton);
 
         showCommandsPanel.Controls.Add(vocabPanel);
-
-
-        phraseinTitleButton.Width = (vocabPanel.Width / 3);
-        phraseinTitleButton.FlatAppearance.MouseOverBackColor = phraseinTitleButton.BackColor;
-
-        phraseOutTitleButton.Width = vocabPanel.Width / 2;
-        phraseOutTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
-
-        pathTitleButton.Width = vocabPanel.Width - (phraseInButton.Width + phraseOutButton.Width);
-        pathTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
-
-        fillerTitleBarPanel.BackColor = phraseOutTitleButton.BackColor;
       }
 
       showCommandsPanel.AutoScroll = false;
@@ -383,15 +393,145 @@ namespace DNA
       showCommandsPanel.AutoScroll = true;
     }
 
-    private void addCommandButton_Click(object sender, EventArgs e)
+    private void EditCommand(object sender)
     {
-      consoleLog.Visible        = false;
-      addCommandPanel.Visible   = true;
+      addCommandLabel.Text = "Edit command";
+
+      consoleLogPanel.Visible = false;
+      addCommandPanel.Visible = true;
       commandPanel.Visible = false;
 
       addCommandPanel.Dock = DockStyle.Fill;
 
+      Button button = sender as Button;
+
+      int index = 0;
+      string name;
+
+      if (button.Name.Contains("In"))
+      {
+        name = button.Name.Replace("InButton", "");
+        index = Convert.ToInt32(name);
+      }
+      else if (button.Name.Contains("Out"))
+      {
+        name = button.Name.Replace("OutButton", "");
+        index = Convert.ToInt32(name);
+      }
+      else
+      {
+
+      }
+
+      phraseInTextBox.Text = vocabList[index].PhraseIn;
+      phraseOutTextBox.Text = vocabList[index].PhraseOut;
+      if (!String.IsNullOrEmpty(vocabList[index].URL))
+      {
+        exeCheckBox.Checked = true;
+        pathTextBox.Text = vocabList[index].URL;
+      }
+      else
+      {
+        exeCheckBox.Checked = false;
+        pathTextBox.Text = "";
+      }
+    }
+
+    private void PhraseOutButton_MouseClick(object sender, MouseEventArgs e)
+    {
+      EditCommand(sender);
+    }
+
+    private void PhraseInButton_MouseClick(object sender, MouseEventArgs e)
+    {
+      EditCommand(sender);
+    }
+
+    private void OutButton_MouseLeave(object sender, EventArgs e)
+    {
+      Button button = sender as Button;
+      string name = button.Name.Replace("OutButton", "");
+      int index = Convert.ToInt32(name);
+
+      var panel = showCommandsPanel.Controls.OfType<Panel>().FirstOrDefault(b => b.Name == "Panel" + index);
+
+      var InButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "InButton" + index);
+      var pathButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "ExeButton" + index);
+
+      pathButton.BackColor = panel.BackColor;
+      button.BackColor = panel.BackColor;
+      InButton.BackColor = panel.BackColor;
+      InButton.Show();
+    }
+
+    private void OutButton_MouseEnter(object sender, EventArgs e)
+    {
+      Button button = sender as Button;
+      button.BackColor = SystemColors.ScrollBar;
+      string name = button.Name.Replace("OutButton", "");
+      int index = Convert.ToInt32(name);
+
+      var panel = showCommandsPanel.Controls.OfType<Panel>().FirstOrDefault(b => b.Name == "Panel" + index);
+
+      var outButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "InButton" + index);
+      var pathButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "ExeButton" + index);
+
+      pathButton.BackColor = button.BackColor;
+      outButton.BackColor = button.BackColor;
+      outButton.Show();
+    }
+
+    private void InButton_MouseLeave(object sender, EventArgs e)
+    {
+      Button button = sender as Button;
+      string name = button.Name.Replace("InButton", "");
+      int index = Convert.ToInt32(name);
+
+      var panel = showCommandsPanel.Controls.OfType<Panel>().FirstOrDefault(b => b.Name == "Panel" + index);
+      var outButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "OutButton" + index);
+      var pathButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "ExeButton" + index);
+
+      pathButton.BackColor = panel.BackColor;
+      button.BackColor = panel.BackColor;
+      outButton.BackColor = panel.BackColor;
+      outButton.Show();
+    }
+
+    private void InButton_MouseEnter(object sender, EventArgs e)
+    {
+      Button button = sender as Button;
+      button.BackColor = SystemColors.ScrollBar;
+      string name = button.Name.Replace("InButton", "");
+      int index = Convert.ToInt32(name);
+
+      var panel = showCommandsPanel.Controls.OfType<Panel>().FirstOrDefault(b => b.Name == "Panel" + index);
+      var outButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "OutButton" + index);
+      var pathButton = panel.Controls.OfType<Button>().FirstOrDefault(b => b.Name == "ExeButton" + index);
+
+      pathButton.BackColor = button.BackColor;
+      outButton.BackColor = button.BackColor;
+      outButton.Show();
+    }
+
+
+
+    private void addCommandButton_Click(object sender, EventArgs e)
+    {
+      consoleLogPanel.Visible        = false;
+      addCommandPanel.Visible   = true;
+      commandPanel.Visible = false;
+
+      addCommandLabel.Text = "New command";
+      phraseInTextBox.Text = "";
+      phraseOutTextBox.Text = "";
+      pathTextBox.Text = "";
+      exeCheckBox.Checked = false;
+
+      addCommandPanel.Dock = DockStyle.Fill;
+
       int leftMargin = addCommandPanel.Width / 10;
+
+      addCommandLabel.Left = leftMargin;
 
       phraseInLabel.Left    = leftMargin;
       phraseInTextBox.Left  = leftMargin;
@@ -401,7 +541,7 @@ namespace DNA
       phraseOutTextBox.Left  = leftMargin;
       phraseOutTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
 
-      exeCheckBox.Left  = leftMargin;
+      exeCheckBox.Left  = leftMargin + 1;
       pathLabel.Left    = leftMargin;
       pathTextBox.Left  = leftMargin;
       pathTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
@@ -426,9 +566,25 @@ namespace DNA
 
     private void showConsoleButton_Click(object sender, EventArgs e)
     {
-      consoleLog.Visible = true;
+      consoleLogPanel.Visible = true;
       commandPanel.Visible = false;
       addCommandPanel.Visible = false;
+    }
+
+    private void DNAMain_ResizeEnd(object sender, EventArgs e)
+    {
+      if (consoleLogPanel.Visible == true)
+      {
+        conversationLogButton.PerformClick();
+      }
+      else if (commandPanel.Visible == true)
+      {
+        showCommandsButton.PerformClick();
+      }
+      else if (addCommandPanel.Visible == true)
+      {
+        addCommandButton.PerformClick();
+      }
     }
   }
 }
