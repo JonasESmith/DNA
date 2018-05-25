@@ -53,6 +53,13 @@ namespace DNA
     public DNAMain()
     {
       InitializeComponent();
+      InitStyles();
+    }
+
+    private void InitStyles()
+    {
+      consoleLogPanel.Dock = DockStyle.Fill;
+
     }
 
     private void DNAMain_Load(object sender, EventArgs e)
@@ -290,6 +297,8 @@ namespace DNA
       showCommandsPanel.Controls.Clear();
 
       consoleLog.Visible = false;
+      addCommandPanel.Visible = false;
+
       showCommandsPanel.Visible = true;
       showCommandsPanel.Dock = DockStyle.Fill;
       int topMargin = 0;
@@ -351,8 +360,48 @@ namespace DNA
 
     private void addCommandButton_Click(object sender, EventArgs e)
     {
-      consoleLog.Visible = false;
+      consoleLog.Visible        = false;
+      addCommandPanel.Visible   = true;
       showCommandsPanel.Visible = false;
+
+      addCommandPanel.Dock = DockStyle.Fill;
+
+      phraseInLabel.Left    = addCommandPanel.Width / 10;
+      phraseInTextBox.Left  = addCommandPanel.Width / 10;
+      phraseInTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
+
+      phraseOutLabel.Left    = addCommandPanel.Width / 10;
+      phraseOutTextBox.Left  = addCommandPanel.Width / 10;
+      phraseOutTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
+
+      pathLabel.Left    = addCommandPanel.Width / 10;
+      pathTextBox.Left  = addCommandPanel.Width / 10;
+      pathTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
+
+      exeCheckBox.Left = addCommandPanel.Width / 10;
+
+      saveCommandButton.Left = addCommandPanel.Width - (addCommandPanel.Width / 10);
+    }
+
+    private void exeCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+      if (exeCheckBox.Checked == true)
+      {
+        pathLabel.Enabled   = true;
+        pathTextBox.Enabled = true;
+      }
+      else
+      {
+        pathLabel.Enabled   = false;
+        pathTextBox.Enabled = false;
+      }
+    }
+
+    private void showConsoleButton_Click(object sender, EventArgs e)
+    {
+      consoleLog.Visible = true;
+      showCommandsPanel.Visible = false;
+      addCommandPanel.Visible = false;
     }
   }
 }
