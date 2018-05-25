@@ -42,7 +42,7 @@ namespace DNA
 
     private const string         userName = "\n> User : ";
     private const string         botName  = "\n< Alan : ";
-    private const string         version  = "Version 2.7";
+    private const string         version  = "Version 2.8";
     private const string INPUT_VOCAB_FILE = "Vocabulary.txt";
 
 
@@ -299,8 +299,9 @@ namespace DNA
       consoleLog.Visible = false;
       addCommandPanel.Visible = false;
 
+      commandPanel.Visible = true;
       showCommandsPanel.Visible = true;
-      showCommandsPanel.Dock = DockStyle.Fill;
+      commandPanel.Dock = DockStyle.Fill;
       int topMargin = 0;
 
       for(int i = 0; i < vocabList.Count; i++)
@@ -311,12 +312,16 @@ namespace DNA
         vocabPanel.Height = 30;
         vocabPanel.Name = "Panel" + i;
 
+
         Button phraseInButton = new Button();
         phraseInButton.Name = "InButton" + i;
         phraseInButton.Text = vocabList[i].PhraseIn.ToString();
         phraseInButton.Width = (vocabPanel.Width / 3);
         phraseInButton.Height = 30;
         phraseInButton.TextAlign = ContentAlignment.MiddleCenter;
+        phraseInButton.FlatStyle = FlatStyle.Flat;
+        phraseInButton.FlatAppearance.BorderSize = 0;
+
 
         Button phraseOutButton = new Button();
         phraseOutButton.Name = "OutButton" + i;
@@ -325,6 +330,11 @@ namespace DNA
         phraseOutButton.Height = 30;
         phraseOutButton.Left = phraseInButton.Width;
         phraseOutButton.TextAlign = ContentAlignment.MiddleCenter;
+        phraseOutButton.FlatStyle = FlatStyle.Flat;
+        phraseOutButton.FlatAppearance.BorderSize = 0;
+
+
+
 
         Button executableButton = new Button();
         if (String.IsNullOrEmpty(vocabList[i].URL))
@@ -341,6 +351,9 @@ namespace DNA
         executableButton.Height = 30;
         executableButton.Left = phraseInButton.Width + phraseOutButton.Width;
         executableButton.TextAlign = ContentAlignment.MiddleCenter;
+        executableButton.FlatStyle = FlatStyle.Flat;
+        executableButton.FlatAppearance.BorderSize = 0;
+
 
         topMargin += phraseOutButton.Height + 2;
 
@@ -349,6 +362,18 @@ namespace DNA
         vocabPanel.Controls.Add(executableButton);
 
         showCommandsPanel.Controls.Add(vocabPanel);
+
+
+        phraseinTitleButton.Width = (vocabPanel.Width / 3);
+        phraseinTitleButton.FlatAppearance.MouseOverBackColor = phraseinTitleButton.BackColor;
+
+        phraseOutTitleButton.Width = vocabPanel.Width / 2;
+        phraseOutTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
+
+        pathTitleButton.Width = vocabPanel.Width - (phraseInButton.Width + phraseOutButton.Width);
+        pathTitleButton.FlatAppearance.MouseOverBackColor = phraseOutTitleButton.BackColor;
+
+        fillerTitleBarPanel.BackColor = phraseOutTitleButton.BackColor;
       }
 
       showCommandsPanel.AutoScroll = false;
@@ -362,25 +387,27 @@ namespace DNA
     {
       consoleLog.Visible        = false;
       addCommandPanel.Visible   = true;
-      showCommandsPanel.Visible = false;
+      commandPanel.Visible = false;
 
       addCommandPanel.Dock = DockStyle.Fill;
 
-      phraseInLabel.Left    = addCommandPanel.Width / 10;
-      phraseInTextBox.Left  = addCommandPanel.Width / 10;
+      int leftMargin = addCommandPanel.Width / 10;
+
+      phraseInLabel.Left    = leftMargin;
+      phraseInTextBox.Left  = leftMargin;
       phraseInTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
 
-      phraseOutLabel.Left    = addCommandPanel.Width / 10;
-      phraseOutTextBox.Left  = addCommandPanel.Width / 10;
+      phraseOutLabel.Left    = leftMargin;
+      phraseOutTextBox.Left  = leftMargin;
       phraseOutTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
 
-      pathLabel.Left    = addCommandPanel.Width / 10;
-      pathTextBox.Left  = addCommandPanel.Width / 10;
+      exeCheckBox.Left  = leftMargin;
+      pathLabel.Left    = leftMargin;
+      pathTextBox.Left  = leftMargin;
       pathTextBox.Width = addCommandPanel.Width - ((addCommandPanel.Width / 10) * 2);
 
-      exeCheckBox.Left = addCommandPanel.Width / 10;
 
-      saveCommandButton.Left = addCommandPanel.Width - (addCommandPanel.Width / 10);
+      saveCommandButton.Left = pathTextBox.Right - saveCommandButton.Width;
     }
 
     private void exeCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -400,7 +427,7 @@ namespace DNA
     private void showConsoleButton_Click(object sender, EventArgs e)
     {
       consoleLog.Visible = true;
-      showCommandsPanel.Visible = false;
+      commandPanel.Visible = false;
       addCommandPanel.Visible = false;
     }
   }

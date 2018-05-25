@@ -50,12 +50,20 @@
       this.exeCheckBox = new System.Windows.Forms.CheckBox();
       this.conversationLogButton = new System.Windows.Forms.Button();
       this.saveCommandButton = new System.Windows.Forms.Button();
+      this.commandPanel = new System.Windows.Forms.Panel();
+      this.showCommandsTitlePanel = new System.Windows.Forms.Panel();
+      this.phraseinTitleButton = new System.Windows.Forms.Button();
+      this.phraseOutTitleButton = new System.Windows.Forms.Button();
+      this.pathTitleButton = new System.Windows.Forms.Button();
+      this.fillerTitleBarPanel = new System.Windows.Forms.Panel();
       this.contextMenuStrip1.SuspendLayout();
       this.backPanel.SuspendLayout();
       this.rightPanel.SuspendLayout();
       this.consoleLogPanel.SuspendLayout();
       this.leftPanel.SuspendLayout();
       this.addCommandPanel.SuspendLayout();
+      this.commandPanel.SuspendLayout();
+      this.showCommandsTitlePanel.SuspendLayout();
       this.SuspendLayout();
       // 
       // contextMenuStrip1
@@ -92,8 +100,8 @@
       // 
       // rightPanel
       // 
+      this.rightPanel.Controls.Add(this.commandPanel);
       this.rightPanel.Controls.Add(this.addCommandPanel);
-      this.rightPanel.Controls.Add(this.showCommandsPanel);
       this.rightPanel.Controls.Add(this.consoleLogPanel);
       this.rightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
       this.rightPanel.Location = new System.Drawing.Point(160, 0);
@@ -103,10 +111,10 @@
       // 
       // showCommandsPanel
       // 
-      this.showCommandsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-      this.showCommandsPanel.Location = new System.Drawing.Point(708, 0);
+      this.showCommandsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.showCommandsPanel.Location = new System.Drawing.Point(0, 32);
       this.showCommandsPanel.Name = "showCommandsPanel";
-      this.showCommandsPanel.Size = new System.Drawing.Size(33, 543);
+      this.showCommandsPanel.Size = new System.Drawing.Size(540, 511);
       this.showCommandsPanel.TabIndex = 2;
       this.showCommandsPanel.Visible = false;
       // 
@@ -144,6 +152,7 @@
       // addCommandButton
       // 
       this.addCommandButton.Dock = System.Windows.Forms.DockStyle.Top;
+      this.addCommandButton.FlatAppearance.BorderSize = 0;
       this.addCommandButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.addCommandButton.Location = new System.Drawing.Point(0, 64);
       this.addCommandButton.Name = "addCommandButton";
@@ -157,6 +166,7 @@
       // showCommandsButton
       // 
       this.showCommandsButton.Dock = System.Windows.Forms.DockStyle.Top;
+      this.showCommandsButton.FlatAppearance.BorderSize = 0;
       this.showCommandsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.showCommandsButton.Location = new System.Drawing.Point(0, 32);
       this.showCommandsButton.Name = "showCommandsButton";
@@ -180,7 +190,7 @@
       this.addCommandPanel.Dock = System.Windows.Forms.DockStyle.Left;
       this.addCommandPanel.Location = new System.Drawing.Point(10, 0);
       this.addCommandPanel.Name = "addCommandPanel";
-      this.addCommandPanel.Size = new System.Drawing.Size(720, 543);
+      this.addCommandPanel.Size = new System.Drawing.Size(18, 543);
       this.addCommandPanel.TabIndex = 3;
       this.addCommandPanel.Visible = false;
       // 
@@ -248,6 +258,7 @@
       // conversationLogButton
       // 
       this.conversationLogButton.Dock = System.Windows.Forms.DockStyle.Top;
+      this.conversationLogButton.FlatAppearance.BorderSize = 0;
       this.conversationLogButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.conversationLogButton.Location = new System.Drawing.Point(0, 0);
       this.conversationLogButton.Name = "conversationLogButton";
@@ -260,8 +271,8 @@
       // 
       // saveCommandButton
       // 
-      this.saveCommandButton.BackColor = System.Drawing.Color.Turquoise;
-      this.saveCommandButton.FlatAppearance.BorderSize = 0;
+      this.saveCommandButton.BackColor = System.Drawing.Color.MediumAquamarine;
+      this.saveCommandButton.FlatAppearance.BorderColor = System.Drawing.Color.MediumAquamarine;
       this.saveCommandButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.saveCommandButton.Location = new System.Drawing.Point(512, 464);
       this.saveCommandButton.Name = "saveCommandButton";
@@ -269,6 +280,77 @@
       this.saveCommandButton.TabIndex = 7;
       this.saveCommandButton.Text = "Save command";
       this.saveCommandButton.UseVisualStyleBackColor = false;
+      // 
+      // commandPanel
+      // 
+      this.commandPanel.Controls.Add(this.showCommandsPanel);
+      this.commandPanel.Controls.Add(this.showCommandsTitlePanel);
+      this.commandPanel.Dock = System.Windows.Forms.DockStyle.Right;
+      this.commandPanel.Location = new System.Drawing.Point(201, 0);
+      this.commandPanel.Name = "commandPanel";
+      this.commandPanel.Size = new System.Drawing.Size(540, 543);
+      this.commandPanel.TabIndex = 4;
+      this.commandPanel.Visible = false;
+      // 
+      // showCommandsTitlePanel
+      // 
+      this.showCommandsTitlePanel.Controls.Add(this.fillerTitleBarPanel);
+      this.showCommandsTitlePanel.Controls.Add(this.pathTitleButton);
+      this.showCommandsTitlePanel.Controls.Add(this.phraseOutTitleButton);
+      this.showCommandsTitlePanel.Controls.Add(this.phraseinTitleButton);
+      this.showCommandsTitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
+      this.showCommandsTitlePanel.Location = new System.Drawing.Point(0, 0);
+      this.showCommandsTitlePanel.Name = "showCommandsTitlePanel";
+      this.showCommandsTitlePanel.Size = new System.Drawing.Size(540, 32);
+      this.showCommandsTitlePanel.TabIndex = 3;
+      // 
+      // phraseinTitleButton
+      // 
+      this.phraseinTitleButton.BackColor = System.Drawing.SystemColors.ScrollBar;
+      this.phraseinTitleButton.Dock = System.Windows.Forms.DockStyle.Left;
+      this.phraseinTitleButton.FlatAppearance.BorderSize = 0;
+      this.phraseinTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.phraseinTitleButton.Location = new System.Drawing.Point(0, 0);
+      this.phraseinTitleButton.Name = "phraseinTitleButton";
+      this.phraseinTitleButton.Size = new System.Drawing.Size(157, 32);
+      this.phraseinTitleButton.TabIndex = 0;
+      this.phraseinTitleButton.Text = "Phrase in";
+      this.phraseinTitleButton.UseVisualStyleBackColor = false;
+      // 
+      // phraseOutTitleButton
+      // 
+      this.phraseOutTitleButton.BackColor = System.Drawing.SystemColors.ScrollBar;
+      this.phraseOutTitleButton.Dock = System.Windows.Forms.DockStyle.Left;
+      this.phraseOutTitleButton.FlatAppearance.BorderSize = 0;
+      this.phraseOutTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.phraseOutTitleButton.Location = new System.Drawing.Point(157, 0);
+      this.phraseOutTitleButton.Name = "phraseOutTitleButton";
+      this.phraseOutTitleButton.Size = new System.Drawing.Size(223, 32);
+      this.phraseOutTitleButton.TabIndex = 1;
+      this.phraseOutTitleButton.Text = "Phrase out";
+      this.phraseOutTitleButton.UseVisualStyleBackColor = false;
+      // 
+      // pathTitleButton
+      // 
+      this.pathTitleButton.BackColor = System.Drawing.SystemColors.ScrollBar;
+      this.pathTitleButton.Dock = System.Windows.Forms.DockStyle.Left;
+      this.pathTitleButton.FlatAppearance.BorderSize = 0;
+      this.pathTitleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.pathTitleButton.Location = new System.Drawing.Point(380, 0);
+      this.pathTitleButton.Name = "pathTitleButton";
+      this.pathTitleButton.Size = new System.Drawing.Size(120, 32);
+      this.pathTitleButton.TabIndex = 2;
+      this.pathTitleButton.Text = "Executable";
+      this.pathTitleButton.UseVisualStyleBackColor = false;
+      // 
+      // fillerTitleBarPanel
+      // 
+      this.fillerTitleBarPanel.BackColor = System.Drawing.SystemColors.ScrollBar;
+      this.fillerTitleBarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.fillerTitleBarPanel.Location = new System.Drawing.Point(500, 0);
+      this.fillerTitleBarPanel.Name = "fillerTitleBarPanel";
+      this.fillerTitleBarPanel.Size = new System.Drawing.Size(40, 32);
+      this.fillerTitleBarPanel.TabIndex = 3;
       // 
       // DNAMain
       // 
@@ -278,7 +360,7 @@
       this.ContextMenuStrip = this.contextMenuStrip1;
       this.Controls.Add(this.backPanel);
       this.Name = "DNAMain";
-      this.Text = "Alan";
+      this.Text = "DNA";
       this.Load += new System.EventHandler(this.DNAMain_Load);
       this.contextMenuStrip1.ResumeLayout(false);
       this.backPanel.ResumeLayout(false);
@@ -287,6 +369,8 @@
       this.leftPanel.ResumeLayout(false);
       this.addCommandPanel.ResumeLayout(false);
       this.addCommandPanel.PerformLayout();
+      this.commandPanel.ResumeLayout(false);
+      this.showCommandsTitlePanel.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -313,6 +397,12 @@
     private System.Windows.Forms.CheckBox exeCheckBox;
     private System.Windows.Forms.Button conversationLogButton;
     private System.Windows.Forms.Button saveCommandButton;
+    private System.Windows.Forms.Panel commandPanel;
+    private System.Windows.Forms.Panel showCommandsTitlePanel;
+    private System.Windows.Forms.Button pathTitleButton;
+    private System.Windows.Forms.Button phraseOutTitleButton;
+    private System.Windows.Forms.Button phraseinTitleButton;
+    private System.Windows.Forms.Panel fillerTitleBarPanel;
   }
 }
 
