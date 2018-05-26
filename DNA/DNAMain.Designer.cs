@@ -57,6 +57,8 @@
       this.addCommandButton = new System.Windows.Forms.Button();
       this.showCommandsButton = new System.Windows.Forms.Button();
       this.conversationLogButton = new System.Windows.Forms.Button();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.panel2 = new System.Windows.Forms.Panel();
       this.contextMenuStrip1.SuspendLayout();
       this.backPanel.SuspendLayout();
       this.rightPanel.SuspendLayout();
@@ -65,6 +67,7 @@
       this.addCommandPanel.SuspendLayout();
       this.consoleLogPanel.SuspendLayout();
       this.leftPanel.SuspendLayout();
+      this.panel2.SuspendLayout();
       this.SuspendLayout();
       // 
       // contextMenuStrip1
@@ -202,9 +205,9 @@
       this.addCommandPanel.Controls.Add(this.phraseOutTextBox);
       this.addCommandPanel.Controls.Add(this.phraseInTextBox);
       this.addCommandPanel.Dock = System.Windows.Forms.DockStyle.Left;
-      this.addCommandPanel.Location = new System.Drawing.Point(10, 0);
+      this.addCommandPanel.Location = new System.Drawing.Point(485, 0);
       this.addCommandPanel.Name = "addCommandPanel";
-      this.addCommandPanel.Size = new System.Drawing.Size(482, 543);
+      this.addCommandPanel.Size = new System.Drawing.Size(79, 543);
       this.addCommandPanel.TabIndex = 3;
       this.addCommandPanel.Visible = false;
       // 
@@ -293,20 +296,23 @@
       // 
       // consoleLogPanel
       // 
-      this.consoleLogPanel.Controls.Add(this.consoleLog);
+      this.consoleLogPanel.Controls.Add(this.panel2);
+      this.consoleLogPanel.Controls.Add(this.panel1);
       this.consoleLogPanel.Dock = System.Windows.Forms.DockStyle.Left;
       this.consoleLogPanel.Location = new System.Drawing.Point(0, 0);
       this.consoleLogPanel.Name = "consoleLogPanel";
-      this.consoleLogPanel.Size = new System.Drawing.Size(10, 543);
+      this.consoleLogPanel.Size = new System.Drawing.Size(485, 543);
       this.consoleLogPanel.TabIndex = 1;
       // 
       // consoleLog
       // 
+      this.consoleLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.consoleLog.ContextMenuStrip = this.contextMenuStrip1;
       this.consoleLog.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.consoleLog.Enabled = false;
       this.consoleLog.Location = new System.Drawing.Point(0, 0);
       this.consoleLog.Name = "consoleLog";
-      this.consoleLog.Size = new System.Drawing.Size(10, 543);
+      this.consoleLog.Size = new System.Drawing.Size(475, 543);
       this.consoleLog.TabIndex = 0;
       this.consoleLog.Text = "";
       // 
@@ -364,6 +370,24 @@
       this.conversationLogButton.UseVisualStyleBackColor = true;
       this.conversationLogButton.Click += new System.EventHandler(this.showConsoleButton_Click);
       // 
+      // panel1
+      // 
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+      this.panel1.Location = new System.Drawing.Point(0, 0);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(10, 543);
+      this.panel1.TabIndex = 1;
+      // 
+      // panel2
+      // 
+      this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.panel2.Controls.Add(this.consoleLog);
+      this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel2.Location = new System.Drawing.Point(10, 0);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(475, 543);
+      this.panel2.TabIndex = 2;
+      // 
       // DNAMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +409,7 @@
       this.addCommandPanel.PerformLayout();
       this.consoleLogPanel.ResumeLayout(false);
       this.leftPanel.ResumeLayout(false);
+      this.panel2.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -418,6 +443,8 @@
     private System.Windows.Forms.Button phraseinTitleButton;
     private System.Windows.Forms.Panel fillerTitleBarPanel;
     private System.Windows.Forms.Label addCommandLabel;
+    private System.Windows.Forms.Panel panel2;
+    private System.Windows.Forms.Panel panel1;
   }
 }
 

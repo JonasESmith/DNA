@@ -395,6 +395,8 @@ namespace DNA
 
     private void EditCommand(object sender)
     {
+      addCommandButton.PerformClick();
+
       addCommandLabel.Text = "Edit command";
 
       consoleLogPanel.Visible = false;
