@@ -271,16 +271,6 @@ namespace DNA
 
     #region Contextmenu & mneu
 
-    private void showCommandsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ShowCommands();
-    }
-
-    private void showCommandsToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      ShowCommands();
-    }
-
     private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
     {
       ReloadVocab();

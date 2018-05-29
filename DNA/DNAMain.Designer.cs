@@ -30,7 +30,6 @@
     {
       this.components = new System.ComponentModel.Container();
       this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-      this.showCommandsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.reloadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.backPanel = new System.Windows.Forms.Panel();
       this.rightPanel = new System.Windows.Forms.Panel();
@@ -52,13 +51,13 @@
       this.phraseOutTextBox = new System.Windows.Forms.TextBox();
       this.phraseInTextBox = new System.Windows.Forms.TextBox();
       this.consoleLogPanel = new System.Windows.Forms.Panel();
+      this.panel2 = new System.Windows.Forms.Panel();
       this.consoleLog = new System.Windows.Forms.RichTextBox();
+      this.panel1 = new System.Windows.Forms.Panel();
       this.leftPanel = new System.Windows.Forms.Panel();
       this.addCommandButton = new System.Windows.Forms.Button();
       this.showCommandsButton = new System.Windows.Forms.Button();
       this.conversationLogButton = new System.Windows.Forms.Button();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.panel2 = new System.Windows.Forms.Panel();
       this.contextMenuStrip1.SuspendLayout();
       this.backPanel.SuspendLayout();
       this.rightPanel.SuspendLayout();
@@ -66,29 +65,21 @@
       this.showCommandsTitlePanel.SuspendLayout();
       this.addCommandPanel.SuspendLayout();
       this.consoleLogPanel.SuspendLayout();
-      this.leftPanel.SuspendLayout();
       this.panel2.SuspendLayout();
+      this.leftPanel.SuspendLayout();
       this.SuspendLayout();
       // 
       // contextMenuStrip1
       // 
       this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showCommandsToolStripMenuItem1,
             this.reloadToolStripMenuItem1});
       this.contextMenuStrip1.Name = "contextMenuStrip1";
-      this.contextMenuStrip1.Size = new System.Drawing.Size(178, 48);
-      // 
-      // showCommandsToolStripMenuItem1
-      // 
-      this.showCommandsToolStripMenuItem1.Name = "showCommandsToolStripMenuItem1";
-      this.showCommandsToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
-      this.showCommandsToolStripMenuItem1.Text = "Show Commands...";
-      this.showCommandsToolStripMenuItem1.Click += new System.EventHandler(this.showCommandsToolStripMenuItem1_Click);
+      this.contextMenuStrip1.Size = new System.Drawing.Size(120, 26);
       // 
       // reloadToolStripMenuItem1
       // 
       this.reloadToolStripMenuItem1.Name = "reloadToolStripMenuItem1";
-      this.reloadToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
+      this.reloadToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
       this.reloadToolStripMenuItem1.Text = "Reload...";
       this.reloadToolStripMenuItem1.Click += new System.EventHandler(this.reloadToolStripMenuItem1_Click);
       // 
@@ -304,6 +295,16 @@
       this.consoleLogPanel.Size = new System.Drawing.Size(485, 543);
       this.consoleLogPanel.TabIndex = 1;
       // 
+      // panel2
+      // 
+      this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.panel2.Controls.Add(this.consoleLog);
+      this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel2.Location = new System.Drawing.Point(10, 0);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(475, 543);
+      this.panel2.TabIndex = 2;
+      // 
       // consoleLog
       // 
       this.consoleLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -315,6 +316,14 @@
       this.consoleLog.Size = new System.Drawing.Size(475, 543);
       this.consoleLog.TabIndex = 0;
       this.consoleLog.Text = "";
+      // 
+      // panel1
+      // 
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+      this.panel1.Location = new System.Drawing.Point(0, 0);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(10, 543);
+      this.panel1.TabIndex = 1;
       // 
       // leftPanel
       // 
@@ -370,24 +379,6 @@
       this.conversationLogButton.UseVisualStyleBackColor = true;
       this.conversationLogButton.Click += new System.EventHandler(this.showConsoleButton_Click);
       // 
-      // panel1
-      // 
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-      this.panel1.Location = new System.Drawing.Point(0, 0);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(10, 543);
-      this.panel1.TabIndex = 1;
-      // 
-      // panel2
-      // 
-      this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.panel2.Controls.Add(this.consoleLog);
-      this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel2.Location = new System.Drawing.Point(10, 0);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(475, 543);
-      this.panel2.TabIndex = 2;
-      // 
       // DNAMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,15 +399,14 @@
       this.addCommandPanel.ResumeLayout(false);
       this.addCommandPanel.PerformLayout();
       this.consoleLogPanel.ResumeLayout(false);
-      this.leftPanel.ResumeLayout(false);
       this.panel2.ResumeLayout(false);
+      this.leftPanel.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
 
     #endregion
     private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-    private System.Windows.Forms.ToolStripMenuItem showCommandsToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem1;
     private System.Windows.Forms.Panel backPanel;
     private System.Windows.Forms.Panel leftPanel;
