@@ -68,6 +68,7 @@ namespace DNA
       consoleLog.Text = version;
       consoleLog.Text += (botName + "Try \"show commands\" to get started");
       LoadGrammar();
+      LoadPDFS();
       LoadSpeechEngine();
     }
 
@@ -77,6 +78,13 @@ namespace DNA
       LoadVocab();
 
       LoadVoice();
+    }
+
+    private void LoadPDFS()
+    {
+      // Needs to load the directory if it exists of the users pdfs.
+      // this would allow them to view specific text snippets from the selected pdf
+      //    * syntax could look like "Hey {name} what is {theorem 1.1} from {fundamentals of math thought};
     }
 
     private void LoadVoice()
